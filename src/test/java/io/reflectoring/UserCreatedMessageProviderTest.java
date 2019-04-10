@@ -11,6 +11,7 @@ import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.NotImplementedException;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -30,20 +31,16 @@ public class UserCreatedMessageProviderTest {
 
 	@PactVerifyProvider("a user created message")
 	public String verifyUserCreatedMessage() throws IOException {
-		// given
-		doNothing().when(publisher).publishMessage(any(String.class), eq("user.created"));
+		throw new NotImplementedException("not implemented yet");
 
-		// when
-		User user = new User(42L, "Zaphod Beeblebrox");
-		UserCreatedMessage message = new UserCreatedMessage("123", user);
+		//mock real MessagePublisher
 
-		messageProducer.produceUserCreatedMessage(message);
+		//build UserCreatedMessage object
 
-		// then
-		ArgumentCaptor<String> messageCapture = ArgumentCaptor.forClass(String.class);
-		verify(publisher, times(1)).publishMessage(messageCapture.capture(), eq("user.created"));
+		//call MessageProducer
 
-		// returning the message
-		return messageCapture.getValue();
+		//capture the JSON sent to publisher
+
+		//return captured message
 	}
 }

@@ -12,7 +12,7 @@
                 "Content-Type": "application/json; charset=UTF-8"
             },
             "contents": {
-                "messageUuid": "test",
+                "messageUuid": "123",
                 "user": {
                     "id": 42,
                     "name": "Zaphod Beeblebrox"
